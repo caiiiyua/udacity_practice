@@ -8,8 +8,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements Button.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-       FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -48,5 +50,41 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Button p1 = (Button) findViewById(R.id.p1);
+        Button p2 = (Button) findViewById(R.id.p2);
+        Button p3 = (Button) findViewById(R.id.p3);
+        Button p4 = (Button) findViewById(R.id.p4);
+        Button p5 = (Button) findViewById(R.id.p5);
+        p1.setOnClickListener(MainActivity.this);
+        p2.setOnClickListener(MainActivity.this);
+        p3.setOnClickListener(MainActivity.this);
+        p4.setOnClickListener(MainActivity.this);
+        p5.setOnClickListener(MainActivity.this);
+    }
+
+    /**
+     * Called when a view has been clicked.
+     *
+     * @param v The view that was clicked.
+     */
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.p1:
+                Toast.makeText(MainActivity.this, "My project 1", Toast.LENGTH_LONG).show();
+            case R.id.p2:
+                Toast.makeText(MainActivity.this, "My project 2", Toast.LENGTH_LONG).show();
+            case R.id.p3:
+                Toast.makeText(MainActivity.this, "My project 3", Toast.LENGTH_LONG).show();
+            case R.id.p4:
+                Toast.makeText(MainActivity.this, "My project 4", Toast.LENGTH_LONG).show();
+            case R.id.p5:
+                Toast.makeText(MainActivity.this, "My project 5", Toast.LENGTH_LONG).show();
+        }
     }
 }
